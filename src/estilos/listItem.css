@@ -10,7 +10,7 @@
   height: 50px;
   width: 780px;
   gap: 10px;
-
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .parrafo {

@@ -47,13 +47,17 @@ function TodoProvider ({children}) {
         setTodos(nuevaLista);
     }
 
+    const actualizarOrden = (nuevaLista) => {
+        setTodos(nuevaLista);
+    };
+
     const abrirEditar = (todo) => {
         setTodoEditando(todo);
         setOpenModal(true);
     };
 
     return(
-        <TodoContext.Provider value={{loading, error, setValorInput, buscar, borrar, completado, todos, totalProductos, productosCompletados, openModal, setOpenModal, añadirTarea, actualizarProducto, abrirEditar, todoEditando, setTodoEditando}}>
+        <TodoContext.Provider value={{loading, error, setValorInput, buscar, borrar, completado, todos, totalProductos, productosCompletados, openModal, setOpenModal, añadirTarea, actualizarProducto, abrirEditar, todoEditando, setTodoEditando, actualizarOrden}}>
             {children}
         </TodoContext.Provider>
     )
