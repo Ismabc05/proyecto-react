@@ -80,13 +80,11 @@
   color: rgb(105, 104, 104);
   font-size: 20px;
   cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
   pointer-events: auto !important;
 }
 
 .edit:hover{
   color: rgb(0, 0, 0);
-  transform: scale(1.5);
 }
 
 .accionDelete {
@@ -102,13 +100,11 @@
   color: rgb(105, 104, 104);
   font-size: 25px;
   cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
   pointer-events: auto !important;
 }
 
 .remove:hover{
   color: rgb(0, 0, 0);
-  transform: scale(1.5);
 }
 
 @media (max-width: 865px) {
