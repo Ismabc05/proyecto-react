@@ -30,13 +30,58 @@ function ListItem(props) {
         : undefined,
     };
 
+    // Manejadores que previenen el drag
+    const handleActionClick = (callback, e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        callback();
+    };
+
+    const handlePointerDown = (e) => {
+        e.stopPropagation();
+    };
+
     return ( 
-        <li ref={setNodeRef} style={style} {...attributes} {...listeners} className={`lista ${props.complete ? "lista-check" : ""}`}  >
-            <div className="accionCheck"><span className={`check ${props.complete ? "check-active" : ""}`} onClick={props.onComplete}><MdCheckCircle /></span></div>
+        <li 
+            ref={setNodeRef} 
+            style={style} 
+            {...attributes} 
+            {...listeners} 
+            className={`lista ${props.complete ? "lista-check" : ""}`}
+        >
+            <div 
+                className="accionCheck" 
+                onClick={(e) => handleActionClick(props.onComplete, e)}
+                onPointerDown={handlePointerDown}
+            >
+                <span className={`check ${props.complete ? "check-active" : ""}`}>
+                    <MdCheckCircle />
+                </span>
+            </div>
             
-            <p className={`parrafo ${props.complete ? "parrafo-check" : ""}`}>{props.text}</p>
-            <div className="accionEdit"><span className="edit" onClick={props.onEdit}><MdModeEdit /></span></div>
-            <div className="accionDelete"><span className="remove" onClick={props.onDelete}><TiDelete /></span></div>
+            <p className={`parrafo ${props.complete ? "parrafo-check" : ""}`}>
+                {props.text}
+            </p>
+            
+            <div 
+                className="accionEdit" 
+                onClick={(e) => handleActionClick(props.onEdit, e)}
+                onPointerDown={handlePointerDown}
+            >
+                <span className="edit">
+                    <MdModeEdit />
+                </span>
+            </div>
+            
+            <div 
+                className="accionDelete" 
+                onClick={(e) => handleActionClick(props.onDelete, e)}
+                onPointerDown={handlePointerDown}
+            >
+                <span className="remove">
+                    <TiDelete />
+                </span>
+            </div>
         </li>
     )
 }
