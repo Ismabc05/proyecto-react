@@ -25,7 +25,7 @@
   font-family:'Inter', sans-serif;
   resize: none;
   padding: 10px 12px;        /* 👈 AQUÍ */
-  box-sizing: border-box;   /* evitra que se agrande el textarea */
+  box-sizing: border-box;
 }
 
 .textarea:focus {
