@@ -13,7 +13,7 @@ import { Form } from '../componentes/form.jsx';
 import { Edit  } from "../componentes/edit.jsx"
 import React from 'react';
 
-import { DndContext, closestCenter } from "@dnd-kit/core";
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 import {
   SortableContext,
   verticalListSortingStrategy,
@@ -34,6 +34,16 @@ function AppUi () {
     todoEditando,
     actualizarOrden
   } = React.useContext(TodoContext);
+
+  // 🔑 CLAVE: Usar PointerSensor con activationConstraint
+  // Esto requiere que muevas el ratón 8px antes de activar el drag
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8, // Requiere mover 8px para activar drag
+      },
+    })
+  );
 
   const handleDragEnd = (event) => {
     const { active, over } = event;
@@ -77,6 +87,7 @@ function AppUi () {
       )}
 
       <DndContext
+        sensors={sensors}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
       >
@@ -116,5 +127,6 @@ function AppUi () {
     </>
   );
 }
+
 
 export {AppUi};

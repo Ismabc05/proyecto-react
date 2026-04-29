@@ -42,6 +42,7 @@ function ListItem(props) {
     };
 
     return ( 
+<<<<<<< HEAD
         <li 
             ref={setNodeRef} 
             style={style} 
@@ -54,11 +55,19 @@ function ListItem(props) {
                 onClick={(e) => handleActionClick(props.onComplete, e)}
                 onPointerDown={handlePointerDown}
             >
+=======
+        <li ref={setNodeRef} style={style} {...attributes} {...listeners} className={`lista ${props.complete ? "lista-check" : ""}`}  >
+            <div className="accionCheck" onClick={(e) => {
+                e.stopPropagation();
+                props.onComplete();
+            }}>
+>>>>>>> b29949c (arreglo de tareas)
                 <span className={`check ${props.complete ? "check-active" : ""}`}>
                     <MdCheckCircle />
                 </span>
             </div>
             
+<<<<<<< HEAD
             <p className={`parrafo ${props.complete ? "parrafo-check" : ""}`}>
                 {props.text}
             </p>
@@ -68,16 +77,31 @@ function ListItem(props) {
                 onClick={(e) => handleActionClick(props.onEdit, e)}
                 onPointerDown={handlePointerDown}
             >
+=======
+            <p className={`parrafo ${props.complete ? "parrafo-check" : ""}`}>{props.text}</p>
+            
+            <div className="accionEdit" onClick={(e) => {
+                e.stopPropagation();
+                props.onEdit();
+            }}>
+>>>>>>> b29949c (arreglo de tareas)
                 <span className="edit">
                     <MdModeEdit />
                 </span>
             </div>
             
+<<<<<<< HEAD
             <div 
                 className="accionDelete" 
                 onClick={(e) => handleActionClick(props.onDelete, e)}
                 onPointerDown={handlePointerDown}
             >
+=======
+            <div className="accionDelete" onClick={(e) => {
+                e.stopPropagation();
+                props.onDelete();
+            }}>
+>>>>>>> b29949c (arreglo de tareas)
                 <span className="remove">
                     <TiDelete />
                 </span>
